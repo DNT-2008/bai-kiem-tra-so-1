@@ -1,34 +1,37 @@
-<?php include "config.php"; ?>
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Quản lý sản phẩm</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Trang chủ</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <img src="logo.png" alt="Logo">
+        <a href="#" class="logo">LOGO</a>
         <nav>
-            <ul>
-                <li><a href="index.php">Trang Chủ</a></li>
-                <li><a href="contact.php">Liên Hệ</a></li>
-                <li><a href="register.php">Đăng Ký</a></li>
-                <li><a href="login.php">Đăng Nhập</a></li>
-            </ul>
+            <a href="index.php" class="active">Trang chủ</a>
+            <a href="products/index.php">Sản phẩm</a>
+            <a href="contact.php">Liên hệ</a>
+            <a href="login.php">Đăng Nhập</a>
+            <a href="register.php">Đăng ký</a>
+            <a href="dashboard.php">Dashboard</a>
         </nav>
     </header>
-    
-    <main>
-        <h1>Chào mừng đến với Arkern</h1>
-        <p>Quản lý sản phẩm một cách dễ dàng và hiệu quả.</p>
-        <a href="register.php" class="btn">Đăng Ký</a>
-        <a href="login.php" class="btn">Đăng Nhập</a>
-    </main>
-    
-    <footer>
-        <p>&copy; 2025 Quản lý sản phẩm. Bảo lưu mọi quyền.</p>
+    <section>
+    <div class="container">
+        <h1>Chào Mừng Đến Với <span>(tên trang web của bạn)</span></h1>
+        <p>Đây là nơi bạn có thể khám phá các dịch vụ tuyệt vời của chúng tôi. Hãy đăng ký hoặc đăng nhập để trải nghiệm ngay hôm nay!</p>
+        <div class="buttons">
+            <button class="register">Đăng Ký</button>
+            <button class="login">Đăng Nhập</button>
+        </div>
+    </div>
+    </section>
+    <script src="script.js"></script>
+    <footer class="footer">
+        &copy; 2025 - Bản quyền thuộc về Đặng Ngọc Tịnh
     </footer>
 </body>
 </html>
