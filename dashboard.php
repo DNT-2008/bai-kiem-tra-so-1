@@ -1,48 +1,36 @@
 <?php
 session_start();
-include "config.php";
 
-// Kiểm tra nếu chưa đăng nhập, chuyển hướng đến trang đăng nhập
-if (!isset($_SESSION["user_id"])) {
+// Kiểm tra nếu người dùng chưa đăng nhập, chuyển hướng về trang đăng nhập
+if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Truy vấn dữ liệu thống kê
-$total_products = $pdo->query("SELECT COUNT(*) FROM products")->fetchColumn();
-$total_users = $pdo->query("SELECT COUNT(*) FROM users")->fetchColumn();
-$total_orders = $pdo->query("SELECT COUNT(*) FROM orders")->fetchColumn();
+// Kết nối database
+$conn = new mysqli('localhost', 'root', '', 'your_database');
+if ($conn->connect_error) {
+    die("Kết nối thất bại: " . $conn->connect_error);
+}
 
+// Lấy thông tin người dùng
+$user_id = $_SESSION['user_id'];
+$stmt = $conn->prepare("SELECT name, email FROM users WHERE id = ?");
+$stmt->bind_param("i", $user_id);
+$stmt->execute();
+$stmt->bind_result($name, $email);
+$stmt->fetch();
+$stmt->close();
 ?>
+
 <!DOCTYPE html>
-<html lang="vi">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Dashboard</title>
-    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container">
-        <h2>Dashboard - Quản lý sản phẩm</h2>
-        <p>Xin chào, <strong><?php echo $_SESSION["username"]; ?></strong>!</p>
-
-        <div class="dashboard">
-            <div class="card">
-                <h3>Tổng Sản Phẩm</h3>
-                <p><?php echo $total_products; ?></p>
-            </div>
-            <div class="card">
-                <h3>Tổng Người Dùng</h3>
-                <p><?php echo $total_users; ?></p>
-            </div>
-            <div class="card">
-                <h3>Tổng Đơn Hàng</h3>
-                <p><?php echo $total_orders; ?></p>
-            </div>
-        </div>
-
-        <a href="products/index.php" class="btn">Quản Lý Sản Phẩm</a>
-        <a href="logout.php" class="btn logout">Đăng Xuất</a>
-    </div>
+    <h2>Chào mừng, <?php echo htmlspecialchars($name); ?>!</h2>
+    <p>Email của bạn: <?php echo htmlspecialchars($email); ?></p>
+    <p><a href="logout.php">Đăng xuất</a></p>
 </body>
 </html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đăng ký</title>
+    <title>Đặt lại mật khẩu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -22,9 +22,6 @@
                 <span class="icon">
                     <ion-icon name="lock-closed"></ion-icon>
                 </span>
-            <div class="forgot-pass">
-                <a href="#">Forgot Password?</a>
-            </div>
             <button type="submit" class="btn">Gửi yêu cầu</button>
         </form>
     </div>

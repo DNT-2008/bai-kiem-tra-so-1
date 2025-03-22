@@ -8,38 +8,58 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="wrapper">
-        <form action="">
+
+<?php
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = htmlspecialchars($_POST['name']);
+    $email = htmlspecialchars($_POST['email']);
+    $subject = htmlspecialchars($_POST['subject']);
+    $message = htmlspecialchars($_POST['message']);
+
+    echo "<p>Cảm ơn $name, chúng tôi đã nhận được tin nhắn của bạn!</p>";
+}
+?>
+
+<div class="wrapper">
+    <form action="" method="POST">
         <div class="space-y-4">
-            <h2>Đăng ký</h2>
+            <h2>Liên hệ với chúng tôi</h2>
+
             <div class="input-group">
                 <span class="icon">
                     <ion-icon name="person"></ion-icon>
                 </span>
-                <input type="text" placeholder="Họ và Tên" required>
+                <input type="text" name="name" placeholder="Họ và Tên" required>
             </div>
+
             <div class="input-group">
                 <span class="icon">
-                    <ion-icon name="lock-closed"></ion-icon>
+                    <ion-icon name="mail"></ion-icon>
                 </span>
-                <input type="password" placeholder="Email" required>
+                <input type="email" name="email" placeholder="Email" required>
             </div>
+
             <div class="input-group">
                 <span class="icon">
-                    <ion-icon name="person"></ion-icon>
+                    <ion-icon name="chatbubble"></ion-icon>
                 </span>
-                <input type="text" placeholder="Chủ đề" required>
+                <input type="text" name="subject" placeholder="Chủ đề" required>
             </div>
+
             <div class="input-group">
                 <span class="icon">
-                    <ion-icon name="person"></ion-icon>
+                    <ion-icon name="document-text"></ion-icon>
                 </span>
-                <input type="text" placeholder="Nội dung" required>
+                <input type="text" name="message" placeholder="Nội dung" required>
             </div>
-            <div class="forgot-pass">
-                <a href="#">Forgot Password?</a>
-            </div>
-            <button type="submit" class="btn">Gửi tin nhắn </button>
-            
+
+            <button type="submit" class="btn">Gửi tin nhắn</button>
+        </div>
+    </form>
+</div>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 </html>
